@@ -1,0 +1,40 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link 
+            href="https://fonts.googleapis.com/css2?family=Mandali&display=swap" 
+            rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <title>English Test</title>
+    </head>
+    <body>
+        <div class="qustion">
+            <p id="word"></p>
+        </div>
+        <div id="Answers">
+            <input type="radio" name="select" id="option-1" value="optionA" onclick="handleNextQuestion()">
+            <input type="radio" name="select" id="option-2" value="optionB" onclick="handleNextQuestion()">
+            <input type="radio" name="select" id="option-3" value="optionC" onclick="handleNextQuestion()">
+            <input type="radio" name="select" id="option-4" value="optionD" onclick="handleNextQuestion()">
+              <label for="option-1" class="option option-1" id="select-one-label">
+                <div class="dot"></div>
+                 <span></span>
+                 </label>
+              <label for="option-2" class="option option-2" id="select-two-label">
+                <div class="dot"></div>
+                 <span></span>
+              </label>
+              <label for="option-3" class="option option-3" id="select-three-label">
+                <div class="dot"></div>
+                 <span></span>
+              </label>
+              <label for="option-4" class="option option-4" id="select-four-label">
+                <div class="dot"></div>
+                 <span></span>
+              </label>
+        </div>
+        <script src="app.js"></script>
+    </body>
