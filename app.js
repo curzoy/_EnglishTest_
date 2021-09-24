@@ -178,7 +178,7 @@ function Result(){
             vocabulary += (6000/words[i].count)*words[i].right;
         }
     }
-
+    document.getElementById('vocabulary').innerHTML = "Your vocabulary size : "+vocabulary;
     console.log("vocabulary : "+vocabulary);
 
     /*document.getElementById('main').style.display = "none";
