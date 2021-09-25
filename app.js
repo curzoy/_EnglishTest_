@@ -21,7 +21,6 @@ let options = [];
 
 let indexNumber = 0;
 
-let score = 0;
 let wrongAttempt = 0;
 let questionNumber = 0;
 let currentQuestionLevel = 0;
@@ -32,15 +31,14 @@ window.addEventListener("DOMContentLoaded", () => getWords());
 function handleQuestions(){
     if(questionNumber === 2){
         if(wrongAttempt > 1){
-            if(currentQuestionLevel != 0){currentQuestionLevel--;console.log("level decreased");}
+            if(currentQuestionLevel != 0){currentQuestionLevel--;}
         }
         else if (wrongAttempt === 0){
-            if(currentQuestionLevel != 5){currentQuestionLevel++;console.log("level increased");}
+            if(currentQuestionLevel != 5){currentQuestionLevel++;}
         }
         questionNumber = 0;
         wrongAttempt = 0;
     }
-    console.log(currentQuestionLevel);
     question = questions['data'][currentQuestionLevel][indexNumber];
     
     var opt = question['options'].split(',');
@@ -65,15 +63,12 @@ function selectOption(){
 
 function optionSelected(){
     isSelected = true;
-    progress(2);
 }
 
 function NextQuestion() {
     handleQuestions();
-    console.log(words);
-    console.log(currentQuestionLevel);
-    
-    document.getElementById('word').innerHTML = "The meaning of "+question.word+" is?";
+    RadioButtonsState(false)
+    document.getElementById('word').innerHTML = "The meaning of <u>"+question.word+"</u> is?";
     document.getElementById("select-one-label").innerHTML = options[0];
     document.getElementById("select-two-label").innerHTML = options[1];
     document.getElementById("select-three-label").innerHTML = options[2];
@@ -86,7 +81,9 @@ function NextQuestion() {
 }
 
 function handleNextQuestion() {
+    RadioButtonsState(true)
     checkForAnswer()
+    
     
     
     setTimeout(() => {
@@ -101,9 +98,9 @@ function handleNextQuestion() {
         unCheckRadioButtons()
     }, 1000);
     indexNumber++;
+    document.getElementById('myBar').innerHTML = indexNumber+"/25";
+    document.getElementById('myBar').style.width = (indexNumber/25)*100+"%";
     words[currentQuestionLevel].count++;
-    console.log("current questions num : "+words[currentQuestionLevel].count)
-    console.log("indexNumber : "+indexNumber);
 }
 
 function unCheckRadioButtons() {
@@ -118,7 +115,6 @@ function checkForAnswer() {
     const currentLevel = currentQuestion.level;
     const options = document.getElementsByName("select"); 
     let correctOption = null
-    //Getting the Right Answer
     options.forEach((option) => {
         if (option.value === currentQuestionAnswer) {
             correctOption = option.labels[0].id
@@ -132,9 +128,7 @@ function checkForAnswer() {
             document.getElementById(correctOption).style.backgroundColor = "#91CB858F"
             document.getElementById(correctOption).style.color = "green"
             document.getElementById(correctOption).style.borderColor = "#91CB858F"
-         console.log("Correct answer is " + currentQuestionAnswer);
-         words[currentQuestionLevel].right++;
-            score++
+            words[currentQuestionLevel].right++;
             setTimeout(() => {
                 questionNumber++
             }, 1000)
@@ -148,7 +142,6 @@ function checkForAnswer() {
             document.getElementById(correctOption).style.color = "green"
             document.getElementById(correctOption).style.backgroundColor = "#91CB858F"
             document.getElementById(correctOption).style.borderColor = "#91CB858F"
-            console.log("wrong! ,Correct answer is " + currentQuestionAnswer);
             wrongAttempt++
             setTimeout(() => {
                 questionNumber++
@@ -174,18 +167,26 @@ function Result(){
             vocabulary += (6000/words[i].count)*words[i].right;
         }
     }
-    document.getElementById('vocabulary').innerHTML = "Your vocabulary size : "+vocabulary;
-    console.log("vocabulary : "+vocabulary);
+    var text = "";
+    if(vocabulary < 6000)
+    text = "Your english level is like a 9 years old child in us";
+    if(vocabulary < 9000 && vocabulary > 6000)
+    text = "Your english level is like a 15 years child old in us";
+    if(vocabulary < 12000 && vocabulary > 9000)
+    text = "25% of adults in the U.S have vocabularies of this size";
+    if(vocabulary < 18000 && vocabulary > 12000)
+    text = "Most adults have vocabularies in this range";
+    if(vocabulary < 24000 && vocabulary > 18000)
+    text = "Most college graduates and professional people";
+    if(vocabulary > 24000)
+    text = "People at the top levels of their professions";
+    document.getElementById('level').innerHTML = text;
 
-    /*document.getElementById('main').style.display = "none";
-    document.getElementById('result').style.display = "block";
-    
-    document.getElementById('testLevel').innerHTML = testLevel;
-    document.getElementById('level').innerHTML = level;
-    document.getElementById('questionLength').innerHTML = questions.length;
-    document.getElementById('score').innerHTML = Score;
-    ProgressBar(total*100);
-    */
+    document.getElementById('word').style.display = "none";
+    document.getElementById('wrapper').style.display = "none";
+    document.getElementById('level').style.display = "block";
+    document.getElementById('presult').style.display = "block";
+    ProgressBar((24000/vocabulary)*100,vocabulary);
 }
 
 function resetOptionBackground() {
@@ -197,26 +198,53 @@ function resetOptionBackground() {
     })
 }
 
-
-let els = document.getElementsByClassName('step');
-let steps = [];
-Array.prototype.forEach.call(els, (e) => {
-  steps.push(e);
-});
-
-function progress(stepNum) {
-  let p = stepNum * 11;
-  document.getElementsByClassName('percent')[0].style.width = `${p}%`;
-  steps.forEach((e) => {
-    if (e.id === stepNum) {
-      e.classList.add('selected');
-      e.classList.remove('completed');
+function RadioButtonsState(state) {
+    const options = document.getElementsByName("select");
+    for (let i = 0; i < options.length; i++) {
+        options[i].disabled= state;
     }
-    if (e.id < stepNum) {
-      e.classList.add('completed');
-    }
-    if (e.id > stepNum) {
-      e.classList.remove('selected', 'completed');
-    }
-  });
 }
+
+
+function ProgressBar(value,voc) {
+    var can = document.getElementById('canvas'),
+        spanProcent = document.getElementById('procent'),
+         c = can.getContext('2d');
+   
+    var posX = can.width / 2,
+        posY = can.height / 2,
+        fps = 1000 / 200,
+        procent = 0,
+        oneProcent = 360 / 100,
+        result = oneProcent * value;
+    
+    c.lineCap = 'round';
+    arcMove();
+    
+    function arcMove(){
+      var deegres = 0;
+      var acrInterval = setInterval (function() {
+        deegres += 1;
+        c.clearRect( 0, 0, can.width, can.height );
+        procent = deegres / oneProcent;
+  
+        spanProcent.innerHTML = voc.toFixed();
+  
+        c.beginPath();
+        c.arc( posX, posY, 70, (Math.PI/180) * 270, (Math.PI/180) * (270 + 360) );
+        c.strokeStyle = '#b1b1b1';
+        c.lineWidth = '10';
+        c.stroke();
+  
+        c.beginPath();
+        c.strokeStyle = '#3949AB';
+        c.lineWidth = '10';
+        c.arc( posX, posY, 70, (Math.PI/180) * 270, (Math.PI/180) * (270 + deegres) );
+        c.stroke();
+        if( deegres >= result ) clearInterval(acrInterval);
+      }, fps);
+      
+    }
+    
+    
+  }
