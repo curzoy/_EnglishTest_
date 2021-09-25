@@ -5,53 +5,49 @@
         <link href="http://services.webchin.org/web-fonts/web-font?font=amiriregular" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Mandali&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
         <title>English Test</title>
     </head>
-    <body>
-        <div class="progress-bar" style="padding-bottom: 5px;"></div>
+    <body id="bb">
+        <div class="progress-bar"></div>
         <h1 class="count"></h1>
+        <div class="container" id="result">
+            
+        </div>
         <div id="content">
+            <div id="myBar" class="w3-container w3-green w3-center" style="width:0%; font-family: Mandali; border-radius: 1px;"></div>
         <div id="header">
-         <div class="container">
-  <div class="progress">
-    <div class="percent"></div>
-  </div>
-  <div class="steps">
-    <div class="step" id="0"></div>
-    <div class="step" id="1"></div>
-    <div class="step" id="2"></div>
-    <div class="step" id="3"></div>
-    <div class="step" id="4"></div>
-    <div class="step" id="5"></div>
-    <div class="step" id="6"></div>
-    <div class="step" id="7"></div>
-    <div class="step" id="8"></div>
-    <div class="step" id="9"></div>
-  </div>
-</div>
+            
         </div>
         <span style="display: block; height: 30pt; border-width: 1px;line-height: 24pt; font-size: 19pt; text-align: center; margin: 1.2em"></span>
-        
-        <div id="menu">
-            <div class="qustion">
-                <p id="word"></p><br>
-                <p id="vocabulary"></p>
+        <div class="qustion">
+            <p id="word"></p>
+            <div id="presult" class="canvas-wrap">
+                <canvas id="canvas" width="300" height="300"></canvas>
+                <span id="procent"></span>
             </div>
-                <div class="wrapper">
-                    <input type="radio" name="select" id="option-1" onclick="optionSelected()">
-                    <input type="radio" name="select" id="option-2" onclick="optionSelected()">
-                    <input type="radio" name="select" id="option-3" onclick="optionSelected()">
-                    <input type="radio" name="select" id="option-4" onclick="optionSelected()">
+            
+        </div>
+        <div id="menu">
+            <h4 id="level" style="display: none;">Your English Level is bad</h4>
+                <div id="wrapper" class="wrapper">
+                    <input type="radio" name="select" id="option-1" readonly="readonly" onclick="optionSelected()">
+                    <input type="radio" name="select" id="option-2" readonly="readonly" onclick="optionSelected()">
+                    <input type="radio" name="select" id="option-3" readonly="readonly" onclick="optionSelected()">
+                    <input type="radio" name="select" id="option-4" readonly="readonly" onclick="optionSelected()">
                       <label for="option-1" class="option option-1" id="select-one-label"></label>
                       <label for="option-2" class="option option-2" id="select-two-label"></label>
                       <label for="option-3" class="option option-3" id="select-three-label"></label>
                       <label for="option-4" class="option option-4" id="select-four-label"></label>
                 </div>
-                <hr style="padding: 10px;">
+                <hr style="border-color: black;">
         </div>
 
         <div class="footer">
-            <i id="checkmark" class="fas fa-forward"></i>
+            <hr>
+            <i id="checkmark" onclick="ProgressBar(10,5671.1)" class="fas fa-forward"></i>
             <i id="checkmark" onclick="selectOption()" class="fas fa-check"></i>
         </div>
     </div>
