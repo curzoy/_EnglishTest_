@@ -65,12 +65,14 @@ function selectOption(){
 
 function optionSelected(){
     isSelected = true;
+    progress(2);
 }
 
 function NextQuestion() {
     handleQuestions();
     console.log(words);
     console.log(currentQuestionLevel);
+    
     document.getElementById('word').innerHTML = "The meaning of "+question.word+" is?";
     document.getElementById("select-one-label").innerHTML = options[0];
     document.getElementById("select-two-label").innerHTML = options[1];
@@ -193,4 +195,28 @@ function resetOptionBackground() {
       document.getElementById(option.labels[0].id).style.color = ""
       document.getElementById(option.labels[0].id).style.borderColor  = ""
     })
+}
+
+
+let els = document.getElementsByClassName('step');
+let steps = [];
+Array.prototype.forEach.call(els, (e) => {
+  steps.push(e);
+});
+
+function progress(stepNum) {
+  let p = stepNum * 11;
+  document.getElementsByClassName('percent')[0].style.width = `${p}%`;
+  steps.forEach((e) => {
+    if (e.id === stepNum) {
+      e.classList.add('selected');
+      e.classList.remove('completed');
+    }
+    if (e.id < stepNum) {
+      e.classList.add('completed');
+    }
+    if (e.id > stepNum) {
+      e.classList.remove('selected', 'completed');
+    }
+  });
 }
