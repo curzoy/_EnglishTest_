@@ -8,16 +8,35 @@
         <title>English Test</title>
     </head>
     <body>
-        <div class="rootContainer">
+        <div class="progress-bar" style="padding-bottom: 5px;"></div>
+        <h1 class="count"></h1>
+        <div id="content">
         <div id="header">
+         <div class="container">
+  <div class="progress">
+    <div class="percent"></div>
+  </div>
+  <div class="steps">
+    <div class="step" id="0"></div>
+    <div class="step" id="1"></div>
+    <div class="step" id="2"></div>
+    <div class="step" id="3"></div>
+    <div class="step" id="4"></div>
+    <div class="step" id="5"></div>
+    <div class="step" id="6"></div>
+    <div class="step" id="7"></div>
+    <div class="step" id="8"></div>
+    <div class="step" id="9"></div>
+  </div>
+</div>
+        </div>
+        <span style="display: block; height: 30pt; border-width: 1px;line-height: 24pt; font-size: 19pt; text-align: center; margin: 1.2em"></span>
+        
+        <div id="menu">
             <div class="qustion">
                 <p id="word"></p><br>
                 <p id="vocabulary"></p>
             </div>
-        </div>
-        <span style="display: block; height: 72pt; border-width: 1px;line-height: 24pt; font-size: 19pt; text-align: center; margin: 1.2em"></span>
-        
-        <div id="menu">
                 <div class="wrapper">
                     <input type="radio" name="select" id="option-1" onclick="optionSelected()">
                     <input type="radio" name="select" id="option-2" onclick="optionSelected()">
@@ -28,13 +47,15 @@
                       <label for="option-3" class="option option-3" id="select-three-label"></label>
                       <label for="option-4" class="option option-4" id="select-four-label"></label>
                 </div>
+                <hr style="padding: 10px;">
         </div>
-        <hr style="width: 100%;">
-        <div id="footer">
-            <svg id="checkmark" onclick="selectOption()" xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"></path><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"></path></svg>
-            <i class="fas fa-forward" style="color: gray; padding: 10px; align-items:center;"></i>
+
+        <div class="footer">
+            <i id="checkmark" class="fas fa-forward"></i>
+            <i id="checkmark" onclick="selectOption()" class="fas fa-check"></i>
         </div>
     </div>
     </body>
     <script src="app.js"></script>
+    <script src="progress.js"></script>
 </html>
