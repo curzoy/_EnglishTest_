@@ -8,7 +8,7 @@ var getWords = async () => {
     NextQuestion();
 }
 
-let shuffledQuestions = []
+let isSelected = false;
 
 let words = [{count:0,right:0},{count:0,right:0},{count:0,right:0},{count:0,right:0},{count:0,right:0},{count:0,right:0}]
 
@@ -30,11 +30,11 @@ let currentQuestionLevel = 0;
 window.addEventListener("DOMContentLoaded", () => getWords());
 
 function handleQuestions(){
-    if(questionNumber == 4){
-        if(wrongAttempt > 2){
+    if(questionNumber === 2){
+        if(wrongAttempt > 1){
             if(currentQuestionLevel != 0){currentQuestionLevel--;console.log("level decreased");}
         }
-        else if (wrongAttempt <= 1){
+        else if (wrongAttempt === 0){
             if(currentQuestionLevel != 5){currentQuestionLevel++;console.log("level increased");}
         }
         questionNumber = 0;
@@ -56,8 +56,18 @@ function handleQuestions(){
     
 }
 
+function selectOption(){
+    if(isSelected){
+        handleNextQuestion()
+        isSelected = false;
+    }
+}
+
+function optionSelected(){
+    isSelected = true;
+}
+
 function NextQuestion() {
-    //RadioButtonsState(false)
     handleQuestions();
     console.log(words);
     console.log(currentQuestionLevel);
@@ -85,7 +95,7 @@ function handleNextQuestion() {
         else {
             Result();
         }
-        //resetOptionBackground()
+        resetOptionBackground()
         unCheckRadioButtons()
     }, 1000);
     indexNumber++;
@@ -117,29 +127,11 @@ function checkForAnswer() {
 
     options.forEach((option) => {
         if (option.checked === true && option.value === currentQuestionAnswer) {
-         //   document.getElementById(correctOption).style.backgroundColor = "green"
-         //   document.getElementById(correctOption).style.borderColor = "green"
+            document.getElementById(correctOption).style.backgroundColor = "#91CB858F"
+            document.getElementById(correctOption).style.color = "green"
+            document.getElementById(correctOption).style.borderColor = "#91CB858F"
          console.log("Correct answer is " + currentQuestionAnswer);
          words[currentQuestionLevel].right++;
-         
-            
-         /*   switch (currentType) {
-                case "A2":
-                    A2++
-                    break;
-                case "B1":
-                    B1++
-                    break;
-                case "B2":
-                    B2++
-                    break;
-                case "C1":
-                    C1++
-                    break;
-                case "C2":
-                    C2++
-                    break;
-            } */
             score++
             setTimeout(() => {
                 questionNumber++
@@ -148,10 +140,12 @@ function checkForAnswer() {
 
         else if (option.checked && option.value !== currentQuestionAnswer) {
             const wrongLabelId = option.labels[0].id
-            //document.getElementById(wrongLabelId).style.backgroundColor = "red"
-            //document.getElementById(wrongLabelId).style.borderColor = "red"
-            //document.getElementById(correctOption).style.backgroundColor = "green"
-            //document.getElementById(correctOption).style.borderColor = "green"
+            document.getElementById(wrongLabelId).style.backgroundColor = "#ff000038"
+            document.getElementById(wrongLabelId).style.borderColor = "#ff000038"
+            document.getElementById(wrongLabelId).style.color = "red"
+            document.getElementById(correctOption).style.color = "green"
+            document.getElementById(correctOption).style.backgroundColor = "#91CB858F"
+            document.getElementById(correctOption).style.borderColor = "#91CB858F"
             console.log("wrong! ,Correct answer is " + currentQuestionAnswer);
             wrongAttempt++
             setTimeout(() => {
@@ -195,7 +189,8 @@ function Result(){
 function resetOptionBackground() {
     const options = document.getElementsByName("select");
     options.forEach((option) => {
-      //  document.getElementById(option.labels[0].id).style.backgroundColor = ""
-       // document.getElementById(option.labels[0].id).style.borderColor  = ""
+      document.getElementById(option.labels[0].id).style.backgroundColor = ""
+      document.getElementById(option.labels[0].id).style.color = ""
+      document.getElementById(option.labels[0].id).style.borderColor  = ""
     })
 }
