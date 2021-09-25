@@ -18,5 +18,10 @@ var body = document.querySelector('body'),
   } else {;
     bar.className += " done";
     document.getElementById('content').style.display = "block";
+    setTimeout(function() {
+      document.getElementById('bb').style.backgroundColor = "white";
+      bar.style.display = "none";
+      },200);
+    
   }
 })();
