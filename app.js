@@ -90,7 +90,7 @@ function skipQuestion(){
         resetOptionBackground()
         unCheckRadioButtons()
     indexNumber++;
-    if(indexNumber <= 25){
+    if(indexNumber < 25){
         document.getElementById('myBar').innerHTML = indexNumber+"/25";
         document.getElementById('myBar').style.width = (indexNumber/25)*100+"%";
     }
