@@ -19,8 +19,9 @@ var body = document.querySelector('body'),
     bar.className += " done";
     document.getElementById('content').style.display = "block";
     setTimeout(function() {
-      document.getElementById('bb').style.backgroundColor = "white";
+      body.style.backgroundColor = "white";
       bar.style.display = "none";
+      counter.style.display = "none";
       },200);
     
   }
