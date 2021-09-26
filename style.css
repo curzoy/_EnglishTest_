@@ -14,7 +14,8 @@ html,body{
   background-color: black;
   height: 100%;
   overflow: hidden;
-
+  height: 100%;
+  overflow-y: hidden;
 }
 
 #content{
@@ -192,17 +193,14 @@ span#procent {
 
 #btn{
   display: none;
-  border: white;
-  border-width: 2px;
-  background-color: white;
   position: absolute;
   left: 50%;
   top: 80vh;
   width: 250px;
   transform: translate(-50%, 50%);
   font-size: 20px;
-  color: white;
+  font-family: "Mandali";
+  color: black;
 }
-
 
 
