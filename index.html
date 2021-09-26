@@ -2,19 +2,30 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="stars.css">
         <link href="http://services.webchin.org/web-fonts/web-font?font=amiriregular" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Mandali&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
         <title>English Test</title>
     </head>
-    <body id="bb">
+    <body>
         <div class="progress-bar"></div>
         <h1 class="count"></h1>
+        <div id="presult" class="canvas-wrap">
+            <canvas id="canvas" width="300" height="300"></canvas>
+            <span id="procent"></span>
+        </div>
         <div class="container" id="result">
-            
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+            <h1 id="level"></h1>
+            <button onclick="refreshPage()" id="btn">Try Again</button>
         </div>
         <div id="content">
             <div id="myBar" class="w3-container w3-green w3-center" style="width:0%; font-family: Mandali; border-radius: 1px;"></div>
@@ -24,14 +35,11 @@
         <span style="display: block; height: 20pt; border-width: 1px;line-height: 24pt; font-size: 19pt; text-align: center; margin: 1.2em"></span>
         <div class="qustion">
             <p id="word"></p>
-            <div id="presult" class="canvas-wrap">
-                <canvas id="canvas" width="300" height="300"></canvas>
-                <span id="procent"></span>
-            </div>
+            
             
         </div>
         <div id="menu">
-            <h4 id="level" style="display: none;">Your English Level is bad</h4>
+            
                 <div id="wrapper" class="wrapper">
                     <input type="radio" name="select" id="option-1" readonly="readonly" onclick="optionSelected()">
                     <input type="radio" name="select" id="option-2" readonly="readonly" onclick="optionSelected()">
