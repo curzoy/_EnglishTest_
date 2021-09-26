@@ -2,9 +2,6 @@ var getWords = async () => {
         let uri = "https://script.google.com/macros/s/AKfycbymcY9hiCa73Dab919Ip25ERMryzIOAlKB-a9LaQV2IykXqcDxrigeqpn8Dxk2INhHn/exec";
         var res = await fetch(uri);
         questions = await res.json();
-
-
-    //console.log(questions['data'][level][0]['options']);
     NextQuestion();
 }
 
@@ -78,6 +75,26 @@ function NextQuestion() {
     document.getElementById("option-3").value = options[2];
     document.getElementById("option-4").value = options[3];
     
+}
+
+
+function skipQuestion(){
+    RadioButtonsState(true);
+    setTimeout(() => {
+        if (indexNumber < 25) {
+            NextQuestion();
+            
+        }
+        else {
+            Result();
+        }
+        resetOptionBackground()
+        unCheckRadioButtons()
+    }, 1000);
+    indexNumber++;
+    document.getElementById('myBar').innerHTML = indexNumber+"/25";
+    document.getElementById('myBar').style.width = (indexNumber/25)*100+"%";
+    words[currentQuestionLevel].count++;
 }
 
 function handleNextQuestion() {
@@ -186,7 +203,7 @@ function Result(){
     document.getElementById('wrapper').style.display = "none";
     document.getElementById('level').style.display = "block";
     document.getElementById('presult').style.display = "block";
-    ProgressBar((24000/vocabulary)*100,vocabulary);
+    ProgressBar((vocabulary/24000)*100,vocabulary);
 }
 
 function resetOptionBackground() {
