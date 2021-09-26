@@ -80,7 +80,6 @@ function NextQuestion() {
 
 function skipQuestion(){
     RadioButtonsState(true);
-    setTimeout(() => {
         if (indexNumber < 25) {
             NextQuestion();
             
@@ -90,10 +89,11 @@ function skipQuestion(){
         }
         resetOptionBackground()
         unCheckRadioButtons()
-    }, 1000);
     indexNumber++;
-    document.getElementById('myBar').innerHTML = indexNumber+"/25";
-    document.getElementById('myBar').style.width = (indexNumber/25)*100+"%";
+    if(indexNumber <= 25){
+        document.getElementById('myBar').innerHTML = indexNumber+"/25";
+        document.getElementById('myBar').style.width = (indexNumber/25)*100+"%";
+    }
     words[currentQuestionLevel].count++;
 }
 
@@ -199,12 +199,16 @@ function Result(){
     text = "People at the top levels of their professions";
     document.getElementById('level').innerHTML = text;
 
-    document.getElementById('word').style.display = "none";
-    document.getElementById('wrapper').style.display = "none";
+    document.getElementById('content').style.display = "none";
+    document.getElementById('btn').style.display = "block";
+    document.querySelector('body').style.backgroundColor = "black";
     document.getElementById('level').style.display = "block";
-    document.getElementById('presult').style.display = "block";
     ProgressBar((vocabulary/24000)*100,vocabulary);
 }
+
+function refreshPage(){
+    window.location.reload();
+} 
 
 function resetOptionBackground() {
     const options = document.getElementsByName("select");
@@ -249,12 +253,12 @@ function ProgressBar(value,voc) {
   
         c.beginPath();
         c.arc( posX, posY, 70, (Math.PI/180) * 270, (Math.PI/180) * (270 + 360) );
-        c.strokeStyle = '#b1b1b1';
+        c.strokeStyle = '#ffffffa4';
         c.lineWidth = '10';
         c.stroke();
   
         c.beginPath();
-        c.strokeStyle = '#3949AB';
+        c.strokeStyle = '#ffffff';
         c.lineWidth = '10';
         c.arc( posX, posY, 70, (Math.PI/180) * 270, (Math.PI/180) * (270 + deegres) );
         c.stroke();
