@@ -1,4 +1,5 @@
 var body = document.querySelector('body'),
+    html = document.querySelector('html'),
     bar = document.querySelector('.progress-bar'),
     counter = document.querySelector('.count'),
     i = 0,
@@ -20,6 +21,7 @@ var body = document.querySelector('body'),
     document.getElementById('content').style.display = "block";
     setTimeout(function() {
       body.style.backgroundColor = "white";
+      html.style.backgroundColor = "white";
       bar.style.display = "none";
       counter.style.display = "none";
       },200);
