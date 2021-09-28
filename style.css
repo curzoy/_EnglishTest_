@@ -5,20 +5,23 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
-body{
-  display: grid;
-  font-family: "Mandali";
-  font-weight: bold;
-  min-height: 400px;
-  background-color: black;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+
+
+html,body{
+  font-family: "Mandali";
+  font-weight: bold;
+  background-color: black;
   height: 100%;
-  overflow: hidden;
-  height: 100%;
+
   overflow-y: hidden;
 }
+
 #content{
   display: none;
 }
@@ -125,15 +128,6 @@ width: 100%;
   font-size: 3em;
   margin-top: -1.33em;
   color: white;
-}
-
-.container {
-  color: white;
-  width: fit-content;
-  position: absolute;
-  top: 1%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .progress {
