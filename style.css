@@ -6,7 +6,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-html,body{
+body{
   display: grid;
   font-family: "Mandali";
   font-weight: bold;
@@ -19,7 +19,6 @@ html,body{
   height: 100%;
   overflow-y: hidden;
 }
-
 #content{
   display: none;
 }
