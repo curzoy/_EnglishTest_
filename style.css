@@ -18,7 +18,9 @@ html,body{
   font-weight: bold;
   background-color: black;
   height: 100%;
-
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow-y: hidden;
 }
 
