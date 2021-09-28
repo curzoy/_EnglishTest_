@@ -12,6 +12,8 @@ html,body{
   font-weight: bold;
   min-height: 400px;
   background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   overflow: hidden;
   height: 100%;
