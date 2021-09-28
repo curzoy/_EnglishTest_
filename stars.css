@@ -39,7 +39,7 @@
     animation: animStar 150s linear infinite;
   }
   #stars3:after {
-    content: "e ";
+    content: " ";
     position: absolute;
     top: 2000px;
     background: transparent;
