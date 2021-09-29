@@ -5,9 +5,6 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 
@@ -16,12 +13,15 @@
 html,body{
   font-family: "Mandali";
   font-weight: bold;
-  background-color: black;
   height: 100%;
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   overflow-y: hidden;
+}
+
+body{
+  background-color: black;
 }
 
 #content{
@@ -180,7 +180,7 @@ span#procent {
 #level{
   position: absolute;
   left: 50%;
-  top: 60vh;
+  top: 40vh;
   bottom: 0vh;
   width: 250px;
   transform: translate(-50%, 50%);
@@ -199,5 +199,3 @@ span#procent {
   font-family: "Mandali";
   color: black;
 }
-
-
