@@ -15,32 +15,25 @@
     </head>
     <body>
         <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
         <div class="progress-bar"></div>
         <h1 class="count"></h1>
         <div id="presult" class="canvas-wrap">
             <canvas id="canvas" width="300" height="300"></canvas>
             <span id="procent"></span>
         </div>
-        <div class="container" id="result"></div>
-            
+        <div class="container" id="result">
             <h1 id="level"></h1>
             <button onclick="refreshPage()" id="btn">Try Again</button>
         </div>
         <div id="content">
-            <div id="myBar" class="w3-container w3-green w3-center" style="width:0%; font-family: Mandali; border-radius: 1px;"></div>
-        <div id="header">
-            
-        </div>
+            <div id="myBar" class="w3-container w3-green w3-center" style="width:0%; font-family: Mandali; border-radius: 1px; color: white;"></div>
         <span style="display: block; height: 20pt; border-width: 1px;line-height: 24pt; font-size: 19pt; text-align: center; margin: 1.2em"></span>
         <div class="qustion">
             <p id="word"></p>
-            
-            
         </div>
         <div id="menu">
-            
                 <div id="wrapper" class="wrapper">
                     <input type="radio" name="select" id="option-1" readonly="readonly" onclick="optionSelected()">
                     <input type="radio" name="select" id="option-2" readonly="readonly" onclick="optionSelected()">
@@ -53,13 +46,12 @@
                 </div>
                 <hr style="border-color: black;">
         </div>
-
         <div class="footer">
             <hr>
             <i id="checkmark" onclick="skipQuestion()" class="fas fa-forward"></i>
             <i id="checkmark" onclick="selectOption()" class="fas fa-check"></i>
         </div>
-    </div>
+        </div>
     </body>
     <script src="app.js"></script>
     <script src="progress.js"></script>
